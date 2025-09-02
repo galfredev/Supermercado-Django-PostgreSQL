@@ -1,0 +1,23 @@
+{# product_confirm_delete.html — Confirmación antes de eliminar un producto. #}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eliminar producto</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 24px; }
+    form { margin-top: 12px; }
+    button, a.button { margin-top: 16px; padding: 8px 12px; border: 1px solid #222; text-decoration: none; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Eliminar producto</h1>
+  <p>¿Seguro que querés eliminar <strong>{{ product.name }}</strong> ({{ product.code }})?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+    <a href="{% url 'home' %}" class="button">Cancelar</a>
+  </form>
+</body>
+</html>

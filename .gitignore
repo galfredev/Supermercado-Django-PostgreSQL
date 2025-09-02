@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+*.log
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+
+# Django / Base de datos
+db.sqlite3
+*.sqlite3
+media/
+staticfiles/
+
+# Sistema
+.DS_Store
+.vscode/
+.idea/
+
+# Node (si más adelante usan tooling frontend)
+node_modules/

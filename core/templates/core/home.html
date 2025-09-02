@@ -1,0 +1,62 @@
+{# home.html — Página de inicio con listado de productos y accesos a CRUD.
+   Usa HTML simple para que sea claro y fácil de extender con CSS/Bootstrap más adelante. #}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supermercado — Productos</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 24px; }
+    a.button { padding: 8px 12px; border: 1px solid #222; text-decoration: none; border-radius: 6px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 12px; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background: #f5f5f5; text-align: left; }
+    .actions a { margin-right: 8px; }
+  </style>
+</head>
+<body>
+  <h1>🛒 Supermercado</h1>
+
+  <p>
+    <a class="button" href="{% url 'product_create' %}">➕ Crear producto</a>
+    <a class="button" href="/admin/">⚙️ Admin</a>
+  </p>
+
+  {% if messages %}
+    <ul>
+      {% for m in messages %}<li>{{ m }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Creado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in products %}
+      <tr>
+        <td>{{ p.code }}</td>
+        <td>{{ p.name }}</td>
+        <td>${{ p.price }}</td>
+        <td>{{ p.stock }}</td>
+        <td>{{ p.created_at|date:"Y-m-d H:i" }}</td>
+        <td class="actions">
+          <a href="{% url 'product_update' p.pk %}">✏️ Editar</a>
+          <a href="{% url 'product_delete' p.pk %}">🗑️ Eliminar</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="6">No hay productos todavía.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>
