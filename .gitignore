@@ -27,3 +27,6 @@ staticfiles/
 
 # Node (si más adelante usan tooling frontend)
 node_modules/
+
+# Variables de entorno
+.env

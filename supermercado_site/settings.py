@@ -3,9 +3,13 @@ settings.py — Configuración global del proyecto Django.
 - Configura apps instaladas, base de datos SQLite, templates y archivos estáticos.
 """
 from pathlib import Path
+import environ
 import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = 'dev-secret-key-cambiar-en-produccion'  # Comentario: clave solo para desarrollo
 
@@ -59,10 +63,15 @@ ASGI_APPLICATION = 'supermercado_site.asgi.application'
 # Base de datos SQLite (simple para desarrollo)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('POSTGRES_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': env('POSTGRES_HOST'),
+        'PORT': env('POSTGRES_PORT'),
     }
 }
+
 
 # Validación de contraseñas (por defecto)
 AUTH_PASSWORD_VALIDATORS = [
