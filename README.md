@@ -1,4 +1,4 @@
-# 🛒 Supermercado (Django + SQLite)
+# 🛒 Supermercado (Django + Postgre SQL)
 
 Aplicación web en **Django** para gestionar un supermercado (productos y ventas).  
 Incluye **CRUD de productos**, panel **Django Admin**, y configuración lista con **SQLite**.
