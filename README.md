@@ -62,3 +62,6 @@ Supermercado/
 - Tomás Gastaldi
 
 > Proyecto educativo: base preparada para extender a ventas, tickets e informes.
+
+
+Commit de prueba
